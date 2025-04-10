@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        Int                @id @default(autoincrement())
+  nome      String
+  email     String             @unique
+  senha     String
+  tarefas   Tarefa[] // <- conexão com tarefas
+  tokensRec TokenRecuperacao[] @relation("UsuarioTokens") // <- relação reversa
+}
+
+model Tarefa {
+  id        Int      @id @default(autoincrement())
+  conteudo  String
+  dataHora  DateTime
+  concluido Boolean  @default(false)
+  createdAt DateTime @default(now()) // <-- ESSENCIAL
+  usuarioId Int
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+}
+
+model TokenRecuperacao {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  validade  DateTime
+  usuarioId Int
+  usuario   Usuario  @relation("UsuarioTokens", fields: [usuarioId], references: [id]) // <- mesma relação nomeada
+}
