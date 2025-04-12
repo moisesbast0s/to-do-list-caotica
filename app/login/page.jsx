@@ -25,7 +25,7 @@ export default function LoginPage() {
     const data = await res.json()
 
     if (res.ok) {
-      router.push('/dashboard') // redireciona para a próxima tela
+      router.push('/dashboard')
     } else {
       setErro(data.message)
     }
@@ -62,6 +62,13 @@ export default function LoginPage() {
               onChange={(e) => setSenha(e.target.value)}
               required
             />
+
+            {/* Link de recuperação de senha */}
+            <p style={{ margin: '0.5rem 0 1rem', textAlign: 'right' }}>
+              <Link href="/recuperar-senha" style={{ fontSize: '0.9rem', color: '#6b21a8' }}>
+                Esqueceu a senha?
+              </Link>
+            </p>
 
             <button type="submit">Login</button>
             <p className="signup-link">

@@ -1,5 +1,7 @@
 // app/redefinir-senha/page.jsx
 'use client'
+
+import './redefinir-senha.css'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -40,7 +42,7 @@ export default function RedefinirSenha() {
   }
 
   return (
-    <div style={{ maxWidth: 400, margin: 'auto', padding: 20 }}>
+    <div className="redefinir-container">
       <h2>Redefinir Senha</h2>
       <form onSubmit={handleSubmit}>
         <label>Nova Senha:</label>
@@ -49,8 +51,7 @@ export default function RedefinirSenha() {
           required
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-          style={{ width: '100%', padding: 8, marginBottom: 10 }}
-        />
+       />
 
         <label>Confirmar Senha:</label>
         <input
@@ -58,16 +59,12 @@ export default function RedefinirSenha() {
           required
           value={confirmar}
           onChange={(e) => setConfirmar(e.target.value)}
-          style={{ width: '100%', padding: 8, marginBottom: 16 }}
-        />
-
-        <button type="submit" style={{ width: '100%', padding: 10 }}>
-          Redefinir Senha
-        </button>
+   />
+        <button type="submit">Redefinir Senha</button>
       </form>
 
-      {mensagem && <p style={{ color: 'green' }}>{mensagem}</p>}
-      {erro && <p style={{ color: 'red' }}>{erro}</p>}
+      {mensagem && <p className="mensagem">{mensagem}</p>}
+      {erro && <p className="erro">{erro}</p>}
     </div>
   )
 }

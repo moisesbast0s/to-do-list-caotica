@@ -1,0 +1,51 @@
+/* app/redefinir-senha/redefinir-senha.css */
+
+.redefinir-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .redefinir-container h2 {
+    margin-bottom: 16px;
+  }
+  
+  .redefinir-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .redefinir-container label {
+    margin-bottom: 4px;
+  }
+  
+  .redefinir-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    background-color: #d1caca;
+    border-radius: 10px;
+  }
+  
+  .redefinir-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4c1f75;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .redefinir-container p {
+    margin-top: 10px;
+  }
+  
+  .redefinir-container .mensagem {
+    color: green;
+  }
+  
+  .redefinir-container .erro {
+    color: red;
+  }
+  
