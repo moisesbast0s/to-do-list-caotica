@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import 'flatpickr/dist/themes/dark.css'
 import Flatpickr from 'react-flatpickr'
 import { Portuguese } from 'flatpickr/dist/l10n/pt.js'
+import {Checkbox} from "@heroui/checkbox";
+
 
 export default function Dashboard() {
   const [tarefas, setTarefas] = useState([])
@@ -14,6 +16,17 @@ export default function Dashboard() {
   const [novoConteudo, setNovoConteudo] = useState('')
   const router = useRouter()
   const [novaDataHora, setNovaDataHora] = useState('')
+  const [usuario, setUsuario] = useState(null)
+
+  useEffect(() => {
+    async function fetchUsuario() {
+      const res = await fetch('/api/usuario') // <-- endpoint que retorna os dados do usuário
+      const data = await res.json()
+      setUsuario(data)
+    }
+
+    fetchUsuario()
+  }, [])
 
 
   const sairDaConta = async () => {
@@ -130,8 +143,8 @@ export default function Dashboard() {
   return (
 
     
-    <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto', backgroundColor: '#222', color: 'white', borderRadius: '10px' }}>
-      
+    <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto', backgroundColor: '#fff', color: 'white', borderRadius: '10px' }}>
+       <h2 style={{ margin: 0, color: '#000' }}>Bem-vindo, {usuario?.nome || 'Usuário'}</h2>
         {/* Header com ícone de perfil e botão de sair */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '1rem' }}>
         <button
@@ -165,32 +178,35 @@ export default function Dashboard() {
       </div>
 
       
-      <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>📋 To-Do List</h2>
+      <h2 style={{ textAlign: 'center', marginBottom: '1rem', color: '#030202' }}>📋 To-Do List</h2>
 
       {/* Campo de Adição */}
-      <div style={{ marginBottom: '2rem' }}>
+      <div style={{ marginBottom: '2rem', padding: '1rem', borderRadius: '5px', color: '#030202' }}>
         <input
           type="text"
           maxLength={40} // limita para 100 caracteres
           placeholder="Digite a tarefa"
           value={conteudo}
           onChange={(e) => setConteudo(e.target.value)}
-          style={{ padding: '0.5rem', width: '100%', marginBottom: '0.5rem' }}
+          style={{ padding: '0.5rem', width: '100%', marginBottom: '0.5rem', border: '2px solid #030202', borderRadius: '5px' }}
         />
-          <Flatpickr
-  value={dataHora}
-  options={{
-    dateFormat: 'Y-m-d',
-    locale: Portuguese,
-  }}
-  onChange={([date]) => {
-    if (!date) return
-    const localDate = new Date(date)
-    localDate.setHours(0, 0, 0, 0)
-    setDataHora(localDate.toISOString())
-  }}
-  placeholder="Selecione a data da tarefa"
-/>
+           <Flatpickr
+              value={dataHora}
+              options={{
+                dateFormat: "j \\de F \\de Y",
+                locale: Portuguese,
+                altFormat: "F j, Y",
+              }}
+              onChange={([date]) => {
+                if (!date) return
+                const localDate = new Date(date)
+                localDate.setHours(0, 0, 0, 0)
+                setDataHora(localDate.toISOString())
+              }}
+              placeholder="Selecione a data da tarefa"
+              
+              style={{ padding: '0.5rem', width: '100%', marginBottom: '0.5rem', border: '2px solid #030202', borderRadius: '5px' }}
+            />
 
 
         <button onClick={adicionarTarefa} style={{ width: '100%', padding: '0.75rem', backgroundColor: '#5e17eb', color: 'white', border: 'none', borderRadius: '5px' }}>
@@ -237,17 +253,37 @@ export default function Dashboard() {
         </>
       ) : (
         <>
-          <strong>{tarefa.conteudo}</strong><br />
-          📅  {new Date(tarefa.dataHora).toLocaleDateString('pt-BR')}
-          <br />
-          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
-            <input
-              type="checkbox"
-              checked={tarefa.concluido}
-              onChange={() => concluirTarefa(tarefa.id)}
-            />
-            Concluída
-          </label>
+
+       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <label className="checkbox-custom">
+                <input
+                  type="checkbox"
+                  checked={tarefa.concluido}
+                  onChange={() => concluirTarefa(tarefa.id)}
+                />
+                <span className="checkmark"></span>
+                <strong
+                  style={{
+                    textDecoration: tarefa.concluido ? 'line-through' : 'none',
+                    color: tarefa.concluido ? '#999' : 'white',
+                    marginLeft: '0.5rem'
+                  }}
+                >
+                  {tarefa.conteudo}
+                </strong>
+</label>
+          </div>
+
+
+
+          <div style={{ marginTop: '0.5rem' }}>
+            📅 {new Date(tarefa.dataHora).toLocaleDateString('pt-BR', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+          </div>
+
           <div style={{ marginTop: '0.5rem' }}>
             <button
               onClick={() => {
