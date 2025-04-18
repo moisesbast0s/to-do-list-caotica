@@ -28,14 +28,16 @@ export async function POST(req) {
       expiresIn: '1d',
     })
 
+    // Cria a resposta
     const response = NextResponse.json({ message: 'Login realizado com sucesso!' })
 
-    cookies().set('token', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        path: '/',
-        maxAge: 60 * 60 * 24, // 1 dia
-      })
+    // ✅ Define o cookie corretamente na resposta
+    response.cookies.set('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      maxAge: 60 * 60 * 24, // 1 dia
+    })
 
     return response
   } catch (error) {

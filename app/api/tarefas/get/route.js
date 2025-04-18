@@ -1,8 +1,10 @@
 import { getUsuarioAutenticado } from '@/utils/auth'
 import prisma from '@/lib/prisma'
+import { cookies } from 'next/headers'
 
 export async function GET() {
-  const usuario = await getUsuarioAutenticado()
+  const cookieStore = cookies() // <- precisa estar DENTRO da função
+  const usuario = await getUsuarioAutenticado(cookieStore)
 
   if (!usuario) {
     return new Response(JSON.stringify({ message: 'Não autorizado' }), {

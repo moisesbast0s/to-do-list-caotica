@@ -1,10 +1,15 @@
 import { getUsuarioAutenticado } from '@/utils/auth'
-import prisma from '@/lib/prisma'
-import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 
 export async function GET() {
-  const usuario = await getUsuarioAutenticado()
-  if (!usuario) return NextResponse.json({ message: 'Não autorizado' }, { status: 401 })
+  const cookieStore = cookies()
+  const usuario = await getUsuarioAutenticado(cookieStore)
 
-  return NextResponse.json({ nome: usuario.nome, email: usuario.email })
+  if (!usuario) {
+    return new Response(JSON.stringify({ message: 'Não autorizado' }), {
+      status: 401,
+    })
+  }
+
+  return new Response(JSON.stringify(usuario), { status: 200 })
 }

@@ -70,53 +70,73 @@
     background-color: #fff;
     color: #333;
   }
+
   
   .checkbox-custom {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    user-select: none;
-  }
-  
-  .checkbox-custom input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  .checkbox-custom .checkmark {
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-    border-radius: 4px;
-    border: 2px solid #ccc;
-    display: inline-block;
-    transition: all 0.3s ease;
-  }
-  
-  .checkbox-custom input:checked ~ .checkmark {
-    background-color: #4caf50;
-    border-color: #4caf50;
-  }
-  
-  .checkbox-custom .checkmark::after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .checkbox-custom input:checked ~ .checkmark::after {
-    display: block;
-  }
-  
-  .checkbox-custom .checkmark::after {
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.checkbox-custom {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Esconde o checkbox padrão */
+.checkbox-custom input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Estilo personalizado do checkmark */
+.checkmark {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Hover e estados ativos */
+.checkbox-custom:hover input ~ .checkmark {
+  border-color: #646cff;
+}
+
+.checkbox-custom input:checked ~ .checkmark {
+  background-color: #646cff;
+  border-color: #646cff;
+}
+
+
+.checkbox-custom input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Foco/accessibilidade */
+.checkbox-custom input:focus-visible ~ .checkmark {
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
+}
+
+.checkbox-custom input ~ .checkmark {
+  width: 24px;  /* Tamanho do checkbox */
+  height: 24px;
+}
+
+.checkmark:after {
+  left: 8px;    /* Ajuste do ícone interno */
+  top: 4px;
+  width: 6px;
+  height: 12px;
+}
+
+strong {
+  font-size: 1.2rem;
+}

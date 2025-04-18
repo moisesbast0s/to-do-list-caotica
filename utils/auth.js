@@ -1,15 +1,17 @@
+import jwt from 'jsonwebtoken'
+import { PrismaClient } from '@prisma/client'
 import { cookies } from 'next/headers'
-import { verify } from 'jsonwebtoken'
-import prisma from '@/lib/prisma'
+
+const prisma = new PrismaClient()
 
 export async function getUsuarioAutenticado() {
+  const cookieStore = await cookies() // ✅ AGORA COM AWAIT
+  const token = cookieStore.get('token')?.value
+
+  if (!token) return null
+
   try {
-    const cookieStore = cookies()
-    const token = cookieStore.get('token')?.value
-
-    if (!token) return null
-
-    const decoded = verify(token, process.env.JWT_SECRET)
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
     const usuario = await prisma.usuario.findUnique({
       where: { id: decoded.id },
