@@ -202,6 +202,7 @@ export default function Dashboard() {
             dateFormat: "j \\de F \\de Y",
             locale: Portuguese,
             altFormat: "F j, Y",
+            minDate: "today"
           }}
           onChange={([date]) => {
             if (!date) return
