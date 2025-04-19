@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Geist', sans-serif;
+    background-color: var(--background-principal);
+    font-weight: 600;
+}
+
+.recover-password-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recover-container {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    width: 800px;
+    max-width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.recove-image {
+    flex: 1;
+    background-color: #1e1033;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.recover-password-form {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #2c1a4a;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.recover-password-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.recover-password-form button {
+    padding: 10px;
+    background-color: --btn-cor-roxo;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+input[type="email"] {
+    background-color: #f5f2ff;
+    /* cor de fundo interna */
+    border: 1px solid #ccc;
+    /* borda leve */
+    padding: 10px;
+    border-radius: 5px;
+    color: #2c1a4a;
+    /* cor do texto dentro do input */
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+
+input[type="email"],
+input[type="password"],
+button {
+    width: 100%;
+    box-sizing: border-box;
+    /* garante que paddings não ultrapassem os limites */
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    /* borda leve */
+}
+
+
+/* Mensagem de erro */
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    background-color: #f5f2ff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    color: #2c1a4a;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.form-button {
+    background-color: var(--btn-cor-roxo);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.form-button:hover {
+    background-color: var(--btn-cor-hover);
+}
+
+.error-message {
+    color: #ff4d4f;
+    background: #fff1f0;
+    border: 1px solid #ffa39e;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.success-message {
+    color: #52c41a;
+    background: #f6ffed;
+    border: 1px solid #b7eb8f;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.recover-password-form .signup-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .recover-password-form .signup-link a {
+    color: #6b21a8;
+    text-decoration: none;
+  }
+  
+
+  .signup-link {
+    color: #646464; /* cor do texto do link de cadastro */
+}

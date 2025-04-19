@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --btn-cor-roxo: #6d54aa;
+  --btn-cor-hover: #5b4a9e;
+  --background-principal: #2c1a4a;
 }
 
 
@@ -19,3 +22,4 @@ body {
   color: var(--foreground);
   font-family: 'Geist', sans-serif;
 }
+  

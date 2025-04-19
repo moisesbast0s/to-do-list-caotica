@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import './perfil.css'
+
 
 export default function PerfilPage() {
   const router = useRouter()
@@ -65,103 +67,42 @@ export default function PerfilPage() {
   }
 
   return (
-    <div style={{
-      maxWidth: '400px',
-      margin: '2rem auto',
-      padding: '2rem',
-      background: '#f9f9f9',
-      borderRadius: '10px',
-      boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
-    }}>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '1.5rem'
-      }}>
-        <h2 style={{ margin: 0, color: '#000' }}>Meu Perfil</h2>
-        <button
-          onClick={() => router.push('/dashboard')}
-          style={{
-            background: '#555',
-            color: '#fff',
-            border: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}
-        >
-          Voltar ao Dashboard
-        </button>
-      </div>
+    <div className="perfil-container">
+  <div className="perfil-header">
+    <h2 className="perfil-titulo">Meu Perfil</h2>
+    <button className="botao-voltar" onClick={() => router.push('/dashboard')}>
+      Voltar ao Dashboard
+    </button>
+  </div>
 
-      <form onSubmit={atualizarPerfil}>
-        <label style={{ color: '#000', marginBottom: '0.25rem', display: 'block' }}>Nome:</label>
-        <input
-          type="text"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          placeholder={usuario?.nome || ''}
-          style={{
-            width: '100%',
-            padding: '0.5rem',
-            marginBottom: '1.5rem',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
-            backgroundColor: '#f3f0ff', // cor igual ao email
-            color: '#000' // texto visível
-          }}
-        />
+  <form onSubmit={atualizarPerfil}>
+    <label className="perfil-label">Nome:</label>
+    <input
+      type="text"
+      value={nome}
+      onChange={(e) => setNome(e.target.value)}
+      placeholder={usuario?.nome || ''}
+      className="perfil-input"
+    />
 
+    <label className="perfil-label">Email:</label>
+    <input
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder={usuario?.email || ''}
+      className="perfil-input"
+    />
 
-        <label style={{ color: '#000', marginBottom: '0.25rem', display: 'block' }}>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={usuario?.email || ''}
-          style={{
-            width: '100%',
-            padding: '0.5rem',
-            marginBottom: '1.5rem',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
+    <button type="submit" className="botao-atualizar">
+      Atualizar Perfil
+    </button>
 
-          }}
-        />
+    <button type="button" onClick={excluirConta} className="botao-excluir">
+      Excluir Conta
+    </button>
+  </form>
+</div>
 
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            background: 'green',
-            color: '#fff',
-            border: 'none',
-            padding: '0.75rem',
-            borderRadius: '5px',
-            marginBottom: '1rem',
-            cursor: 'pointer'
-          }}
-        >
-          Atualizar Perfil
-        </button>
-
-        <button
-          type="button"
-          onClick={excluirConta}
-          style={{
-            width: '100%',
-            background: 'red',
-            color: '#fff',
-            border: 'none',
-            padding: '0.75rem',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}
-        >
-          Excluir Conta
-        </button>
-      </form>
-    </div>
   )
 }

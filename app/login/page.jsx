@@ -70,7 +70,7 @@ export default function LoginPage() {
               </Link>
             </p>
 
-            <button type="submit">Login</button>
+            <button type="submit" className='botao-de-login'>Login</button>
             <p className="signup-link">
               Não tem conta? <Link href="/cadastro">Cadastrar-se</Link>
             </p>

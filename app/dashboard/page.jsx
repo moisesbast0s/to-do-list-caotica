@@ -1,5 +1,4 @@
 'use client'
-import { FaTrash, FaEdit } from 'react-icons/fa';
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import 'flatpickr/dist/themes/dark.css'
