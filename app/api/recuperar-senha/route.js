@@ -27,7 +27,6 @@ export async function POST(req) {
 
   const link = `http://localhost:3000/redefinir-senha?token=${token}`
 
-  // Envia o email
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

@@ -6,14 +6,12 @@ export async function PUT(request, { params }) {
   if (!usuario) {
     return new Response(JSON.stringify({ message: 'Não autorizado' }), { status: 401 })
   }
-
   const { id } = params
   const { conteudo, dataHora } = await request.json()
 
   if (!conteudo || !dataHora) {
     return new Response(JSON.stringify({ message: 'Dados inválidos' }), { status: 400 })
   }
-
   try {
     const tarefa = await prisma.tarefa.update({
       where: {
@@ -25,7 +23,6 @@ export async function PUT(request, { params }) {
         dataHora: new Date(dataHora),
       },
     })
-
     return new Response(JSON.stringify(tarefa), { status: 200 })
   } catch (error) {
     console.error('Erro ao editar tarefa:', error)

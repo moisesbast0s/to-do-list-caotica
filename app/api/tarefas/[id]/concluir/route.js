@@ -1,14 +1,14 @@
 export async function PUT(request, { params }) {
   try {
-    // Extrai o ID corretamente (sem destruturar se params for uma Promise)
-    const id = params.id; // ou params.id?.toString()
+    
+    const id = params.id; 
 
     if (!id || isNaN(parseInt(id))) {
       return new Response(
         JSON.stringify({ erro: "ID inválido ou não fornecido" }),
         { 
           status: 400, 
-          headers: { "Content-Type": "application/json" } // Adicione headers
+          headers: { "Content-Type": "application/json" }
         }
       );
     }
@@ -32,12 +32,12 @@ export async function PUT(request, { params }) {
       data: { concluido: !tarefa.concluido },
     });
 
-    // Retorne a resposta com headers explícitos
+  
     return new Response(JSON.stringify(tarefaAtualizada), {
       status: 200,
       headers: { 
         "Content-Type": "application/json",
-        "Cache-Control": "no-store" // Evite cache
+        "Cache-Control": "no-store" 
       },
     });
 

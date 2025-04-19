@@ -51,7 +51,7 @@ export default function RedefinirSenha() {
           required
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-       />
+        />
 
         <label>Confirmar Senha:</label>
         <input
@@ -59,7 +59,7 @@ export default function RedefinirSenha() {
           required
           value={confirmar}
           onChange={(e) => setConfirmar(e.target.value)}
-   />
+        />
         <button type="submit">Redefinir Senha</button>
       </form>
 

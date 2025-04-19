@@ -240,6 +240,7 @@ export default function Dashboard() {
                   options={{
                     dateFormat: 'Y-m-d',
                     locale: Portuguese,
+                    minDate: 'today'
                   }}
                   onChange={([date]) => {
                     if (!date) return
@@ -267,7 +268,7 @@ export default function Dashboard() {
                       type="checkbox"
                       checked={tarefa.concluido}
                       onChange={() => concluirTarefa(tarefa.id)}
-                      style={{ 
+                      style={{
                         margin: 0, // Remove margens padrão
                         transform: 'translateY(1px)' // Ajuste fino de alinhamento
                       }}
@@ -286,9 +287,6 @@ export default function Dashboard() {
                     {tarefa.conteudo}
                   </strong>
                 </div>
-
-
-
                 <div style={{ marginTop: '0.5rem', fontSize: '1rem', color: 'black', fontWeight: 400 }}>
                   {new Date(tarefa.dataHora).toLocaleDateString('pt-BR', {
                     day: 'numeric',
@@ -310,7 +308,7 @@ export default function Dashboard() {
                   </button>
                   <button
                     onClick={() => excluirTarefa(tarefa.id)}
-                    style={{ backgroundColor: '#e3b6b6', color: 'white', border: 'none', padding: '5px 8px', borderRadius: '8px' }}
+                    style={{ backgroundColor: '#E54840', color: 'white', border: 'none', padding: '5px 8px', borderRadius: '8px' }}
                   >
                     Excluir
                   </button>
@@ -320,7 +318,6 @@ export default function Dashboard() {
           </li>
         ))}
       </ul>
-
     </div>
   )
 }

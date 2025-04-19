@@ -3,7 +3,6 @@ import { prisma } from '@/lib/prisma'
 import { getUsuarioAutenticado } from '@/utils/auth'
 import bcrypt from 'bcryptjs'
 
-// Handler GET - Retorna os dados do usuário autenticado
 export async function GET(req) {
   try {
     const usuario = await getUsuarioAutenticado(req.headers)
@@ -28,7 +27,6 @@ export async function GET(req) {
   }
 }
 
-// Handler PUT - Atualiza o perfil
 export async function PUT(req) {
   try {
     const usuario = await getUsuarioAutenticado(req.headers)
@@ -58,7 +56,6 @@ export async function PUT(req) {
   }
 }
 
-// Handler DELETE - Exclui o usuário
 export async function DELETE(request) {
     const usuario = await getUsuarioAutenticado()
   
@@ -67,14 +64,12 @@ export async function DELETE(request) {
     }
   
     try {
-      // Primeiro: deletar as tarefas do usuário
       await prisma.tarefa.deleteMany({
         where: {
           usuarioId: usuario.id
         }
       })
   
-      // Depois: deletar o próprio usuário
       await prisma.usuario.delete({
         where: {
           id: usuario.id

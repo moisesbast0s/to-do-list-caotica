@@ -5,10 +5,8 @@ import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
 
 const prisma = new PrismaClient()
-
 export async function POST(req) {
   const { email, senha } = await req.json()
-
   try {
     const user = await prisma.usuario.findUnique({
       where: { email }
@@ -28,11 +26,10 @@ export async function POST(req) {
       expiresIn: '1d',
     })
 
-    // Cria a resposta
+    
     const response = NextResponse.json({ message: 'Login realizado com sucesso!' })
 
-    // ✅ Define o cookie corretamente na resposta
-    response.cookies.set('token', token, {
+      response.cookies.set('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',

@@ -98,20 +98,20 @@ export default function PerfilPage() {
       <form onSubmit={atualizarPerfil}>
         <label style={{ color: '#000', marginBottom: '0.25rem', display: 'block' }}>Nome:</label>
         <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            placeholder={usuario?.nome || ''}
-            style={{
-              width: '100%',
-              padding: '0.5rem',
-              marginBottom: '1.5rem',
-              borderRadius: '5px',
-              border: '1px solid #ccc',
-              backgroundColor: '#f3f0ff', // cor igual ao email
-              color: '#000' // texto visível
-            }}
-          />
+          type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          placeholder={usuario?.nome || ''}
+          style={{
+            width: '100%',
+            padding: '0.5rem',
+            marginBottom: '1.5rem',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            backgroundColor: '#f3f0ff', // cor igual ao email
+            color: '#000' // texto visível
+          }}
+        />
 
 
         <label style={{ color: '#000', marginBottom: '0.25rem', display: 'block' }}>Email:</label>
@@ -126,7 +126,7 @@ export default function PerfilPage() {
             marginBottom: '1.5rem',
             borderRadius: '5px',
             border: '1px solid #ccc',
-    
+
           }}
         />
 
