@@ -27,7 +27,6 @@ export default function Dashboard() {
     fetchUsuario()
   }, [])
 
-
   const sairDaConta = async () => {
     try {
       await fetch('/api/logout', { method: 'POST' })
