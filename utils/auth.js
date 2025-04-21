@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 const prisma = new PrismaClient()
 
 export async function getUsuarioAutenticado() {
-  const cookieStore = await cookies() // ✅ AGORA COM AWAIT
+  const cookieStore = await cookies() 
   const token = cookieStore.get('token')?.value
 
   if (!token) return null
