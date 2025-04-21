@@ -2,7 +2,7 @@
 
 Aplicação de gerenciamento de tarefas, desenvolvida em Next.js 15 e Prisma ORM.
 
-![Preview](https://via.placeholder.com/800x400?text=Preview+da+Aplica%C3%A7%C3%A3o) <!-- Adicione uma imagem real depois -->
+![Tela do Dashboard](/public/dashboard.png)
 
 ## 🚀 Tecnologias
 - Next.js 15 
