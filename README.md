@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📝 To-Do List da Caótica
 
-## Getting Started
+Aplicação de gerenciamento de tarefas, desenvolvida em Next.js 15 e Prisma ORM.
 
-First, run the development server:
+![Preview](https://via.placeholder.com/800x400?text=Preview+da+Aplica%C3%A7%C3%A3o) <!-- Adicione uma imagem real depois -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tecnologias
+- Next.js 15 
+- Prisma ORM + MySQL
+
+## ⚙️ Pré-requisitos
+- Node.js 18+
+- MySQL instalado
+- npm ou yarn
+- Prisma ORM
+
+## 🔧 Configuração
+
+### 1. Configurar Banco de Dados
+Crie um arquivo `.env` na raiz do projeto com: 
+
+```env
+DATABASE_URL="mysql://USUARIO:SENHA@localhost:3306/NOME_DO_BANCO"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Substitua:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* USUARIO: Seu usuário MySQL
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* SENHA: Sua senha MySQL
 
-## Learn More
+* NOME_DO_BANCO: Nome do banco de dados criado no Mysql da sua máquina (ex: todo_caotica)
+### 2. Inicializar Prisma
+`npm prisma generate`
 
-To learn more about Next.js, take a look at the following resources:
+`npm prisma db push`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 3. Instalar Dependências
+`npm install`   ou
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`yarn dev`
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 4. Acesse no navegador
+[http://localhost:3000/](http://localhost:3000/).

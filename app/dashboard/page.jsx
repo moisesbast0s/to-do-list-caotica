@@ -236,7 +236,7 @@ export default function Dashboard() {
                 <Flatpickr
                   value={novaDataHora}
                   options={{
-                    dateFormat: 'Y-m-d',
+                    dateFormat: "j \\de F \\de Y",
                     locale: Portuguese,
                     minDate: 'today'
                   }}
