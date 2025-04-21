@@ -40,5 +40,9 @@ Substitua:
 
 `yarn dev`
 
-# 4. Acesse no navegador
+# 4. Executar o projeto
+`npm run dev` ou
+`yarn dev`
+
+# 5. Acesse no navegador
 [http://localhost:3000/](http://localhost:3000/).
