@@ -14,7 +14,7 @@ export default function NotFound() {
       textAlign: 'center',
       padding: '2rem',
       backgroundColor: '#f5f7fa',
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%)'
+      background: 'linear-gradient(135deg,rgb(140, 77, 199) 0%, #e4e8eb 100%)'
     }}>
       <div style={{
         marginBottom: '2rem',

@@ -14,6 +14,8 @@ model Usuario {
   senha     String
   tarefas   Tarefa[] // <- conexão com tarefas
   tokensRec TokenRecuperacao[] @relation("UsuarioTokens") // <- relação reversa
+
+   auditLogs AuditLog[] 
 }
 
 model Tarefa {
@@ -32,4 +34,14 @@ model TokenRecuperacao {
   validade  DateTime
   usuarioId Int
   usuario   Usuario  @relation("UsuarioTokens", fields: [usuarioId], references: [id]) // <- mesma relação nomeada
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  action    String   // ex: "CREATE_TASK", "UPDATE_TASK"
+  target    String   // ex: "Tarefa ID 123"
+  timestamp DateTime @default(now())
+
+  user      Usuario  @relation(fields: [userId], references: [id])
 }

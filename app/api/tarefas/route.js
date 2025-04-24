@@ -20,5 +20,16 @@ export async function POST(req) {
     },
   })
 
+
+  await prisma.auditLog.create({
+    data: {
+      userId: usuario.id,
+      action: 'CREATE',
+      target: `Tarefa ID ${novaTarefa.id}`,
+    },
+    
+  })
+  
+
   return new Response(JSON.stringify(novaTarefa), { status: 201 })
 }
