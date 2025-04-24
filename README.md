@@ -31,14 +31,12 @@ Substitua:
 
 * NOME_DO_BANCO: Nome do banco de dados criado no Mysql da sua máquina (ex: todo_caotica)
 ### 2. Inicializar Prisma
-`npm prisma generate`
+`npx prisma generate`
 
 `npm prisma db push`
 
 ## 3. Instalar Dependências
-`npm install`   ou
-
-`yarn dev`
+`npm install`   ou `yarn dev`
 
 ## 4. Executar o projeto
 `npm run dev` ou
