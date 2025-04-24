@@ -33,7 +33,7 @@ Substitua:
 ### 2. Inicializar Prisma
 `npx prisma generate`
 
-`npm prisma db push`
+`npx prisma db push`
 
 ## 3. Instalar Dependências
 `npm install`   ou `yarn dev`
